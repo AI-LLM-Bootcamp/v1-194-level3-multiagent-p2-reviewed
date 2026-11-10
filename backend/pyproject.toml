@@ -6,10 +6,16 @@ authors = ["julio colomer <info@aiaccelera.com>"]
 
 [tool.poetry.dependencies]
 python = ">=3.10.0,<3.12"
-crewai = {extras = ["tools"], version = "^0.22.4"}
+# Original version: crewai = {extras = ["tools"], version = "^0.22.4"} and
+# crewai-tools = "^0.0.15". That version of crewai-tools needs lancedb 0.5.x,
+# which is no longer available on PyPI, so the project could not be installed.
+# The app only uses two small pieces of crewai-tools (SerperDevTool and
+# BaseTool), which the project includes in its tools folder (from part 5 on).
+# requests is used by them.
+crewai = "^0.22.4"
 pydantic = "^2.6.3"
 load-dotenv = "^0.1.0"
-crewai-tools = "^0.0.15"
+requests = "^2.31.0"
 flask = "^3.0.2"
 flask-cors = "^4.0.0"
 
